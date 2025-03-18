@@ -1,5 +1,5 @@
-import User from "../models/user.model";
-import Message from "../models/message.model";
+import User from "../models/user.model.js";
+import Message from "../models/message.model.js";
 
 
 
@@ -36,7 +36,7 @@ export const getMessages = async (req, res) => {
         res.status(500).json({message:"Server Error"});
 
     }
-}
+};
 
 export const sendMessage = async (req, res) => {
 try{
@@ -71,4 +71,4 @@ res.status(201).json(newMessage);
 }
 
 
-}
+};
