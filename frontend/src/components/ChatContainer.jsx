@@ -3,19 +3,38 @@ import { useEffect, useRef } from 'react';
 import { useChatStore } from '../store/useChatStore';
 import ChatHeader from './ChatHeader';
 import MessageInput from './MessageInput';
-import { authUser } from '../lib/auth';
+
 import { formatMessageTime } from '../lib/utils';
 import {MessageSkeleton} from './Skeleton/MessageSkeleton';
 import { useAuthStore } from '../store/useAuthStore';
 
+
 const ChatContainer = () => {
-  const {messages,getMessages,isMessagesLoading,selectedUser} = useChatStore();
+  const {messages,getMessages,isMessagesLoading,selectedUser,subscribeToMesaages,
+    unsubscribFromMessages} = useChatStore();
+
   const{authUser} = useAuthStore(); 
   const messageEndRef = useRef(null);
 
   useEffect(() => {
     getMessages(selectedUser._id);
-  }, [selectedUser._id, getMessages]);
+
+    subscribeToMesaages();
+
+
+   return () => unsubscribFromMessages();
+  }, [selectedUser._id, getMessages,subscribeToMessages,unsubscribFromMessages]);
+
+
+  useEffect(() => {
+if(messageEndRef.current && messages){
+
+  messageEndRef.current.scrollIntoView({behavior:"smooth"});
+}
+
+
+
+  },[messages]);
 
   if (isMessagesLoading) {
     return (

@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import Message from "../models/message.model.js";
 import cloudinary from "../lib/cloudinary.js"
-
+import {getReceiverSocketId,io} from "../lib/socket.js";
 
 
 
@@ -62,7 +62,11 @@ const newMessage = new Message({
 
 await newMessage.save();
 
-//todo:realtime functionality goes here with socket.io
+
+const receiverSocketId = getReceiverSocketId(receiverId);
+if(receiverSocketId){
+    io.to(receiverSocketId).emit("newMessage",newMessage);
+}
 
 res.status(201).json(newMessage);
 
