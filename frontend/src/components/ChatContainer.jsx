@@ -5,13 +5,13 @@ import ChatHeader from './ChatHeader';
 import MessageInput from './MessageInput';
 
 import { formatMessageTime } from '../lib/utils';
-import {MessageSkeleton} from './Skeleton/MessageSkeleton';
+// import { MessageSkeleton } from '../components/skeletons/MessageSkeleton.jsx';
 import { useAuthStore } from '../store/useAuthStore';
 
 
 const ChatContainer = () => {
-  const {messages,getMessages,isMessagesLoading,selectedUser,subscribeToMesaages,
-    unsubscribFromMessages} = useChatStore();
+  const {messages,getMessages,isMessagesLoading,selectedUser,subscribeToMessages,
+    unsubscribeFromMessages} = useChatStore();
 
   const{authUser} = useAuthStore(); 
   const messageEndRef = useRef(null);
@@ -19,11 +19,11 @@ const ChatContainer = () => {
   useEffect(() => {
     getMessages(selectedUser._id);
 
-    subscribeToMesaages();
+    subscribeToMessages();
 
 
-   return () => unsubscribFromMessages();
-  }, [selectedUser._id, getMessages,subscribeToMessages,unsubscribFromMessages]);
+   return () => unsubscribeFromMessages();
+  }, [selectedUser._id, getMessages,subscribeToMessages,unsubscribeFromMessages]);
 
 
   useEffect(() => {
@@ -95,4 +95,4 @@ if(messageEndRef.current && messages){
   );
 };
 
-export default ChatContainer
+export default ChatContainer;

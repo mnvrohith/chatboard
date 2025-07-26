@@ -1,6 +1,8 @@
 import React from 'react'
-import { useState,useRef} from 'react';
+import { useState, useRef } from 'react';
+import { useChatStore } from '../store/useChatStore'; // Adjust the path as needed
 import toast from 'react-hot-toast';
+import { Image, Send, X } from "lucide-react";
 
 const MessageInput = () => {
 const [text,setText] = useState('');
@@ -27,7 +29,7 @@ const removeImage = () =>{
     if (fileInputRef.current) fileInputRef.current.value = "";
 };
 
-const handleSendMessage = (e) =>{
+const handleSendMessage = async(e) =>{
     e.preventDefault();
     if (!text.trim() && !imagePreview) return;
 
