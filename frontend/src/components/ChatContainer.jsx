@@ -5,7 +5,7 @@ import ChatHeader from './ChatHeader';
 import MessageInput from './MessageInput';
 
 import { formatMessageTime } from '../lib/utils';
-// import { MessageSkeleton } from '../components/skeletons/MessageSkeleton.jsx';
+import { MessageSkeleton } from '../components/skeletons/MessageSkeleton.jsx';
 import { useAuthStore } from '../store/useAuthStore';
 
 
