@@ -31,6 +31,7 @@ export const getMessages = async (req, res) => {
                 {senderId:userToChatId,receiverId:myId},
             ]
         });
+        res.status(200).json(messages);
 
     }catch(error){
         console.error("error in getMessages :",error.message);
