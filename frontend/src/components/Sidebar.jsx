@@ -9,7 +9,7 @@ const Sidebar = () => {
 
   const { onlineUsers } = useAuthStore();
 
-  const [showOnlineOnly, setShowOnlineOnly] = useState(false);
+  const [showOnlineOnly, setShowOnlineOnly] = useState(true);
 
   useEffect(() => {
     getUsers();
