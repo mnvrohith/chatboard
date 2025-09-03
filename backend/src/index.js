@@ -8,14 +8,14 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import {app,server} from "./lib/socket.js";
 dotenv.config();
-
+import VITE_API_BASE_URL from "../frontend/.env";
 
 
 const PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: "http://localhost:5001/api" || "http://localhost:5173",
+    origin: VITE_API_BASE_URL || "http://localhost:5173",
     credentials: true
 }));
 
