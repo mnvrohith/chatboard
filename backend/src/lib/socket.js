@@ -3,14 +3,14 @@ import http from 'http';
 import express from "express";
 import {config} from 'dotenv';
 config();
-
+const BASE_URL = "http://localhost:5001/api";
 
 const app = express();
 const server = http.createServer(app);
 
 const io= new Server(server,{
     cors: {
-        origin: process.env.BASE_URL || "http://localhost:5173",
+        origin:BASE_URL || "http://localhost:5173",
     },
 });
 
