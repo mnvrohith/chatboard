@@ -3,14 +3,13 @@ import http from 'http';
 import express from "express";
 import {config} from 'dotenv';
 config();
-import VITE_API_BASE_URL from "../../frontend/.env";
 
 const app = express();
 const server = http.createServer(app);
 
 const io= new Server(server,{
     cors: {
-        origin:VITE_API_BASE_URL || "http://localhost:5173",
+        origin: process.env.VITE_API_BASE_URL || "http://localhost:5173",
     },
 });
 
