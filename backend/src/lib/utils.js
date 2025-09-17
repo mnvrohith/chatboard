@@ -7,7 +7,7 @@ export const generateToken = (userId,res)=>{
             maxAge: 7 * 24 * 60 * 60 * 1000, // Fix the syntax error here
             httpOnly:true,
             sameSite:"strict",
-            secure:process.NODE_ENV != "development"
+            secure:process.env.NODE_ENV !== "development"
         });
 
         return token;
