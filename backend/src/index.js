@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5001;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: VITE_API_BASE_URL || "http://localhost:5173",
+    origin: VITE_API_BASE_URL,
     credentials: true
 }));
 
